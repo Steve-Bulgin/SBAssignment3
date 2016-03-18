@@ -1,0 +1,286 @@
+<!--
+  FileName: index.html
+  Purpose: Assignment #1, PROG3180-1. Building a 5 page template app
+  Revision History
+   		Steven Bulgin, 2016.01.30: Created
+   		Steven Bulgin, 2016.01.30: Added Navbar, header, and footer for homepage
+   		Steven Bulgin, 2016.01.30: Fixed icons and page titles in navbar to fit 
+   					   Assignment specs
+   		Steven Bulgin, 2016.01.30: Added my own stylesheet, 'SBstyle.css'
+   		Steven Bulgin, 2016.01.30: Added in sbAddFeedbackPage *** Still needs 
+   						form setup(Task 5) ***
+   		Steven Bulgin, 2016.01.30: Added Feedback View/Review page *** Add in 
+   						proper dummy data(Task 6) ***
+   		Steven Bulgin, 2016.01.30: Added Settings page. Have coffee break then 
+   						fix up the contents
+   		Steven Bulgin, 2016.01.31: Home page contents pretty well done.
+   		Steven Bulgin, 2016.01.31: Feedback page done. *** Tidy up styling to 
+   						match specs ***
+   		Steven Bulgin, 2016.02.06: Fixed "Save" button on Feedback page
+   								   Added listview and dummy data to Review page
+  		Steven Bulgin, 2016.02.06: Added sbEditFeedbackPage and linked it to 
+  						feedback page
+  		Steven Bulgin, 2016.02.06: Added content to Set up page
+  		Steven Bulgin, 2016.02.06: Done. Find better image tonight, take screen 
+  						caps, print, ready for hand in.
+		Steven Bulgin, 2016.03.01: Fixed css file name, connected js files and 
+						changed html to represent A2 specs
+		Steven Bulgin, 2016.03.01: Added collapsing fields for ratings and in the
+						sbEditFeedbackPage
+		Steven Bulgin, 2016.03.18: Added project to a GitHub repository to 
+						relearn git in preperation for team project
+-->
+
+<!-- Note to self: Don't use dashs in id's and names -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" name="viewport" content="width=device-width, 
+				initial-scale=1">
+		<title>SBAssignment 1</title>
+		<link rel="stylesheet" type="text/css" 
+				href="css/lib/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/SBmystyle.css">
+	    <script src="js/lib/jquery-2.1.4.js"></script>
+	    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+	    <script src="js/lib/jquery.validate.js"></script>
+	    <script src="js/sbdatabase.js"></script>
+	    <script src="js/sbfeedbackDAL.js"></script>
+	    <script src="js/sbutil.js"></script>
+	    <script src="js/sbglobal.js"></script>
+	</head>
+	<body>
+<!-- ------------- Home page ------------- -->
+		<div data-role="page" id="sbHomePage">
+			<header id="header" data-role="header">
+				<h1>SB Feedback A2</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#sbHomePage" data-icon="home" 
+							class="ui-btn-active ui-state-persist">Home</a></li>
+						<li><a href="#sbAddFeedbackPage" data-icon="plus">Add
+							</a></li>
+						<li><a href="#sbViewFeedbackPage" data-icon="grid">
+							Reviews</a></li>
+						<li><a href="#sbSettingsPage" data-icon="gear">Settings
+							</a></li>
+					</ul>
+				</div>				
+			</header>
+			<section class="main" data-role="content">
+				<h1>Steven Bulgin's Feedback A2 App</h1>
+				<p>
+					Welcome to Steven Bulgin's Feedback A2 app. A protype 
+					designed for mobile programming class. This is the first 
+					iteration of the app to keep track of different 
+					places you visited along with your reviews.
+				</p>
+				<img class="centerer" src="images/sb-icon.png" 
+					alt="A2 Feedback Icon" height="200" width="200">
+                <br/>
+                <p>Please feel free to contact me if you have any suggestions!
+                	</p>
+                <a href="####" data-role="button" data-icon="plus" 
+                	data-iconpos="left">Call: 226.374.8870</a>
+                <a href="####" data-role="button" data-icon="plus" 
+                	data-iconpos="left">Email: sbulgin-cc@conestogac.on.ca</a>
+                <p>Website:</p>
+                <a href="http://www.conestogac.on.ca" target="_blank" 
+                	data-role="button" data-icon="plus" data-iconpos="left">
+                		Conestoga College</a>
+			</section>
+			<footer id="footer" data-role="footer">
+				<h4>&copy;2016 Steven Bulgin</h4>
+			</footer>
+		</div>	
+<!-- ------------- Feedback page ------------- -->	
+		<div data-role="page" id="sbAddFeedbackPage">
+			<header id="header" data-role="header">
+				<h1>Add Feedback</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#sbHomePage" data-icon="home">Home</a></li>
+						<li><a href="#sbAddFeedbackPage" data-icon="plus" 
+							class="ui-btn-active ui-state-persist">Add</a></li>
+						<li><a href="#sbViewFeedbackPage" data-icon="grid">
+							Reviews</a></li>
+						<li><a href="#sbSettingsPage" data-icon="gear">
+							Settings</a></li>
+					</ul>
+				</div>				
+			</header>
+			<section class="main" data-role="content">
+				<form id="sbAddForm">
+					<label for="business">Business:</label>
+					<input type="text" name="business">
+					<label for="email">Reviewer Email:</label>
+					<input type="email" name="email">
+					<label for="comments">Reviewer Comments:</label>
+					<textarea name="comments"></textarea>
+					<label for="reviewdate">Review Date:</label>
+					<input type="date" name="reviewdate">
+					<label for="chkReview">Do you want to add your ratings?
+							</label>
+                    <input type="checkbox" id="chkReview" name="chkReview"
+                    	  data-theme="a" data-iconpos="left" class="reqiured">
+                    <fieldset id="rating-grp" style="display:none">
+                    	<label for="foodquality">Food Quality(0-5):</label>
+    					<input type="numeric" name="foodquality"
+    							 id="foodquality" value="0">
+    					<label for="service">Service(0-5):</label>
+    					<input type="numeric" name="service"
+    							 id="service" value="0">
+    					<label for="valrating">Value(0-5):</label>
+    					<input type="numeric" name="valrating"
+    							 id="valrating" value="0">
+    					<label for="rating">Overall Rating (Calculated):</label>
+    					<input type="numeric" name="rating" id="rating" readonly 
+    							value="0">
+    				</fieldset>
+					<br/>
+					<a href="#" id="btnSave" data-role="button" 
+						data-inline="true" class="blue-btn">Save</a>
+				</form>				
+			</section>
+			<footer id="footer" data-role="footer">
+				<h4>&copy;2016 Steven Bulgin</h4>
+			</footer>
+		</div>
+<!-- ------------- Reviews/View Feedback page ------------- -->	
+		<div data-role="page" id="sbViewFeedbackPage">
+			<header id="header" data-role="header">
+				<h1>List of Reviews</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#sbHomePage" data-icon="home">Home</a></li>
+						<li><a href="#sbAddFeedbackPage" data-icon="plus">Add
+							</a></li>
+						<li><a href="#sbViewFeedbackPage" data-icon="grid" 
+							class="ui-btn-active ui-state-persist">Reviews</a>
+						</li>
+						<li><a href="#sbSettingsPage" data-icon="gear">Settings
+							</a></li>
+					</ul>
+				</div>				
+			</header>
+			<section class="main" data-role="content">
+				<ul data-role="listview" class="ui-listview-inset">
+                    <li data-icon="false">
+                    	<a href="#sbEditFeedbackPage">
+                    		<h2>Business Name: Whale & Ale</h2>
+                    		<p>Reviewer email: dave@fakemail.com</p>
+                    		<p>Comments: Good food, terrible location</p>
+                    		<p>Overall Rating: 75/100</p>
+                    	</a>
+                    </li>
+                    <li data-icon="false">
+                    	<a href="#">
+                    		<h2>Business Name: Mucho Burrito</h2>
+                    		<p>Reviewer email: gary@fakemail.com</p>
+                    		<p>Comments: Mucho delicioso!!!</p>
+                    		<p>Overall Rating: 95/100</p>
+                    	</a>  
+                    </li>
+                </ul>
+
+			</section>
+			<footer id="footer" data-role="footer">
+				<h4>&copy;2016 Steven Bulgin</h4>
+			</footer>
+		</div>
+<!-- ------------ Edit Feedback ------------ -->
+		<div data-role="page" id="sbEditFeedbackPage">
+			<header id="header" data-role="header">
+				<h1>Modify Feedback</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#sbHomePage" data-icon="home">Home</a></li>
+						<li><a href="#sbAddFeedbackPage" data-icon="plus">Add
+							</a></li>
+						<li><a href="#sbViewFeedbackPage" data-icon="grid" 
+							class="ui-btn-active ui-state-persist">Reviews</a>
+						</li>
+						<li><a href="#sbSettingsPage" data-icon="gear">Settings
+							</a></li>
+					</ul>
+				</div>				
+			</header>
+			<section class="main" data-role="content">
+				<form id="sbEditForm">
+					<label for="business">Business:</label>
+					<input type="text" name="business" value="Whale & Ale">
+					<label for="email">Reviewer Email:</label>
+					<input type="email" name="email" value="dave@fakemail.com">
+					<label for="comments">Reviewer Comments:</label>
+					<textarea name="comments">Good food, terrible location
+						</textarea>
+					<label for="reviewdate">Review Date:</label>
+					<input type="date" name="reviewdate">
+					<label for="chkEditReview">Do you want to add your ratings?
+							</label>
+                    <input type="checkbox" id="chkEditReview" name="chkEditReview"
+                    	  data-theme="a" data-iconpos="left">
+                    <fieldset id="rating-edit-grp" style="display:none">
+                    	<label for="editfoodquality">Food Quality(0-5):</label>
+    					<input type="numeric" name="editfoodquality" 
+    							id="editfoodquality" value="0">
+    					<label for="editservice">Service(0-5):</label>
+    					<input type="numeric" name="editservice"
+    							 id="editservice" value="0">
+    					<label for="editvalrating">Value(0-5):</label>
+    					<input type="numeric" name="editvalrating"
+    							 id="editvalrating" value="0">
+    					<label for="edit-rating">Overall Rating (Calculated):
+    						</label>
+    					<input type="numeric" name="editrating" id="editrating"
+							   disabled value="0">
+    				</fieldset>
+					<br/>
+					<div data-role="controlgroup" data-type="horizontal">
+						<a href="#" data-role="button" 
+							style="background-color:yellow;">Cancel</a>
+						<a href="#" data-role="button" data-theme="b">Delete</a>
+						<a id="btnUpdate" href="#" data-role="button" 
+							class="blue-btn">Update</a>
+					</div>
+				</form>
+			</section>
+			<footer id="footer" data-role="footer">
+				<h4>&copy;2016 Steven Bulgin</h4>
+			</footer>
+		</div>
+<!-- ------------- Settings page ------------- -->	
+		<div data-role="page" id="sbSettingsPage">
+			<header id="header" data-role="header">
+				<h1>Settings</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#sbHomePage" data-icon="home">Home</a></li>
+						<li><a href="#sbAddFeedbackPage" data-icon="plus">Add
+							</a></li>
+						<li><a href="#sbViewFeedbackPage" data-icon="grid">
+							Reviews</a></li>
+						<li><a href="#sbSettingsPage" data-icon="gear" 
+							class="ui-btn-active ui-state-persist">Settings</a>
+						</li>
+					</ul>
+				</div>				
+			</header>
+			<section class="main" data-role="content">
+				<form id="sbDefaults">
+					<label for="email">Default reviewer Email:</label>
+					<input type="email" name="defaultemail" id="defaultemail" 
+						value="">
+					<a id="btnSaveDefaults" href="###" data-role="button" class="blue-btn">
+						Save Defaults</a>
+					<a href="###" data-role="button" data-theme="b">
+						Clear Database</a>
+				</form>				
+			</section>
+			<footer id="footer" data-role="footer">
+				<h4>&copy;2016 Steven Bulgin</h4>
+			</footer>
+		</div>
+	</body>
+</html>

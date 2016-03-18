@@ -1,0 +1,68 @@
+/* FileName: SBmystyle.css
+ * Purpose: Adding my own css to A1 elements
+ * Revision History
+ * 		Steven Bulgin, 2016.01.30: Created
+ *      Steven Bulgin, 2016.01.30: Added colors to match header and footer style 
+ *						to assignment specs
+ *      Steven Bulgin, 2016.01.30: Pinned header and footer to top and bottom of 
+ *						page
+ *      Steven Bulgin, 2016.03.01: Added Error styling
+ */
+
+/* Other */
+
+/* Form Error Styling */
+
+
+label.error {
+    color: #F00;
+    font-weight: bold;
+}
+
+input.error, select.error, textarea.error {
+    border: 1px red solid;
+}
+
+#footer, #header {
+ 	background-color: black;
+ 	color: white;
+}
+
+.blue-btn {
+	background-color:#3388cc !Important;
+	color: white !Important;
+}
+
+.centerer {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Header Stuff */
+
+#header {
+ 	position: fixed;
+ 	width: 100%;
+ 	z-index: 2;
+}
+
+/* Main Content */
+
+.main {
+	padding-top: 120px;
+	padding-bottom: 60px;
+}
+
+#sbHomePage section {
+}
+
+/* Footer Stuff */
+
+#footer {
+ 	position: fixed;
+ 	width: 100%;
+ 	bottom: 0;
+ 	z-index: 2;
+}
+
