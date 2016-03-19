@@ -8,6 +8,7 @@
  *      Steven Bulgin, 2016.03.01: Added btn event for Save, Update, and Save 
  *						Defaults
  *					*** Add Some validation on the default email ***
+ *      Steven Bulgin, 2016.03.19: Added InitDB function that creates db on startup
  */
 
 function sbCbxChecker(cbxid, elmid) {
@@ -59,6 +60,16 @@ function init() {
  	$("#btnSaveDefaults").on("click", btnSaveDefaults_click);
 }
 
+function initDB() {
+	 console.info("Creating db");
+	 try {
+	  	DB.sbCreateDatabase();
+	  } catch(e) {
+	  	console.error("Error: (Fatal) Error in initDB. Can not proceed");
+	  } 
+}
+
 $(document).ready(function() {
  	init();
+ 	initDB();
 });
