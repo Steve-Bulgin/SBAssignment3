@@ -55,6 +55,16 @@ function btnDatabaseClear_click () {
 	 clearDatabase(); 
 }
 
+function grabEmail (id) {
+	 var email = localStorage.getItem('email');
+	 $("#" + id).val(email);
+}
+
+function feedbackLoader () {
+	sbupdateTypesDropdown();
+	grabEmail("email"); 
+}
+
 function init() {
  	sbCbxChecker("chkReview", "rating-grp");
  	sbCbxChecker("chkEditReview", "rating-edit-grp");
@@ -63,6 +73,7 @@ function init() {
 	$("#btnSave").on('click', btnSave_click);
  	$("#btnSaveDefaults").on("click", btnSaveDefaults_click);
  	$("#btnDatabaseClear").on("click", btnDatabaseClear_click);
+ 	$("#sbAddFeedbackPage").on("pageshow", feedbackLoader);
 }
 
 function initDB() {
@@ -71,11 +82,15 @@ function initDB() {
 	  	DB.sbCreateDatabase();
 	  	if (db) {
 	  		console.info("making the tables");
+	  		dropTypeTbl();
 	  		DB.sbCreateTables();
 	  	}
 	  } catch(e) {
 	  	console.error("Error: (Fatal) Error in initDB. Can not proceed");
 	  } 
+
+
+	  insertTypes();
 }
 
 $(document).ready(function() {

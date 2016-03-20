@@ -3,6 +3,7 @@
  * Revision History
  * 		Steven Bulgin, 2016.03.19: Created
  *      Steven Bulgin, 2016.03.19: Added sbCreateDatabase, DB creating
+ *      Steven Bulgin, 2016.03.20: Added dropTables
  */
 
  var db;

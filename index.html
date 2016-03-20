@@ -31,6 +31,8 @@
 						relearn git in preperation for team project
 						https://github.com/Steve-Bulgin/SBAssignment3.git
 		Steven Bulgin, 2016.03.20: Added id to "Clear Database" btn
+		Steven Bulgin, 2016.03.20: Fixed home page to match A3. Added in   
+						dropdown that I missed in A2 on Feedback
 -->
 
 <!-- Note to self: Don't use dashs in id's and names -->
@@ -72,9 +74,9 @@
 				</div>				
 			</header>
 			<section class="main" data-role="content">
-				<h1>Steven Bulgin's Feedback A2 App</h1>
+				<h1>Steven Bulgin's Feedback A3 App</h1>
 				<p>
-					Welcome to Steven Bulgin's Feedback A2 app. A protype 
+					Welcome to Steven Bulgin's Feedback A3 app. A protype 
 					designed for mobile programming class. This is the first 
 					iteration of the app to keep track of different 
 					places you visited along with your reviews.
@@ -116,13 +118,16 @@
 			<section class="main" data-role="content">
 				<form id="sbAddForm">
 					<label for="business">Business:</label>
-					<input type="text" name="business">
+					<input type="text" id="business" name="business">
+				    <label for="foodtype" class="select">Type:</label>
+				    <select name="foodtype" id="foodtype">
+				    </select>
 					<label for="email">Reviewer Email:</label>
-					<input type="email" name="email">
+					<input type="email" id="email" name="email">
 					<label for="comments">Reviewer Comments:</label>
-					<textarea name="comments"></textarea>
+					<textarea id="comments" name="comments"></textarea>
 					<label for="reviewdate">Review Date:</label>
-					<input type="date" name="reviewdate">
+					<input type="date" id="reviewdate" name="reviewdate">
 					<label for="chkReview">Do you want to add your ratings?
 							</label>
                     <input type="checkbox" id="chkReview" name="chkReview"
@@ -211,15 +216,21 @@
 			</header>
 			<section class="main" data-role="content">
 				<form id="sbEditForm">
-					<label for="business">Business:</label>
-					<input type="text" name="business" value="Whale & Ale">
-					<label for="email">Reviewer Email:</label>
-					<input type="email" name="email" value="dave@fakemail.com">
-					<label for="comments">Reviewer Comments:</label>
-					<textarea name="comments">Good food, terrible location
+					<label for="editbusiness">Business:</label>
+					<input type="text" id="editbusiness" name="editbusiness" value="Whale & Ale">
+					<label for="editfoodtype" class="select">Type:</label>
+				    <select name="editfoodtype" id="editfoodtype">
+				        <option value="1">Canadian</option>
+				        <option value="2">Asian</option>
+				        <option value="3">Others</option>
+				    </select>
+					<label for="editemail">Reviewer Email:</label>
+					<input type="email" id="editemail" name="editemail" value="dave@fakemail.com">
+					<label for="editcomments">Reviewer Comments:</label>
+					<textarea id="editcomments" name="editcomments">Good food, terrible location
 						</textarea>
-					<label for="reviewdate">Review Date:</label>
-					<input type="date" name="reviewdate">
+					<label for="editreviewdate">Review Date:</label>
+					<input type="date" id="editreviewdate" name="editreviewdate">
 					<label for="chkEditReview">Do you want to add your ratings?
 							</label>
                     <input type="checkbox" id="chkEditReview" name="chkEditReview"
