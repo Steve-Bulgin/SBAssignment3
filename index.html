@@ -30,6 +30,7 @@
 		Steven Bulgin, 2016.03.18: Added project to a GitHub repository to 
 						relearn git in preperation for team project
 						https://github.com/Steve-Bulgin/SBAssignment3.git
+		Steven Bulgin, 2016.03.20: Added id to "Clear Database" btn
 -->
 
 <!-- Note to self: Don't use dashs in id's and names -->
@@ -49,6 +50,7 @@
 	    <script src="js/sbdatabase.js"></script>
 	    <script src="js/sbfeedbackDAL.js"></script>
 	    <script src="js/sbutil.js"></script>
+	    <script src="js/sbfacade.js"></script>
 	    <script src="js/sbglobal.js"></script>
 	</head>
 	<body>
@@ -273,10 +275,10 @@
 					<label for="email">Default reviewer Email:</label>
 					<input type="email" name="defaultemail" id="defaultemail" 
 						value="">
-					<a id="btnSaveDefaults" href="###" data-role="button" class="blue-btn">
-						Save Defaults</a>
-					<a href="###" data-role="button" data-theme="b">
-						Clear Database</a>
+					<a id="btnSaveDefaults" href="###" data-role="button" 
+						class="blue-btn">Save Defaults</a>
+					<a id="btnDatabaseClear" href="###" data-role="button"
+						data-theme="b">Clear Database</a>
 				</form>				
 			</section>
 			<footer id="footer" data-role="footer">

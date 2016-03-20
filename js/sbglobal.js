@@ -51,6 +51,10 @@ function btnSaveDefaults_click() {
 	}
 }
 
+function btnDatabaseClear_click () {
+	 clearDatabase(); 
+}
+
 function init() {
  	sbCbxChecker("chkReview", "rating-grp");
  	sbCbxChecker("chkEditReview", "rating-edit-grp");
@@ -58,12 +62,17 @@ function init() {
  	$("#btnUpdate").on('click', btnUpdate_click);
 	$("#btnSave").on('click', btnSave_click);
  	$("#btnSaveDefaults").on("click", btnSaveDefaults_click);
+ 	$("#btnDatabaseClear").on("click", btnDatabaseClear_click);
 }
 
 function initDB() {
 	 console.info("Creating db");
 	 try {
 	  	DB.sbCreateDatabase();
+	  	if (db) {
+	  		console.info("making the tables");
+	  		DB.sbCreateTables();
+	  	}
 	  } catch(e) {
 	  	console.error("Error: (Fatal) Error in initDB. Can not proceed");
 	  } 

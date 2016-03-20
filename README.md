@@ -5,3 +5,4 @@
 ## A3 CheckList
 
 - ~~sbCreateDatabase DB created~~ 
+- ~~Drop tables on Clear~~
