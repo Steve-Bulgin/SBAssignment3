@@ -68,7 +68,7 @@ var Review = {
 
 		 	 function successInsert() {
                 console.info("Success: Insert successful.");
-                alert("New record added.");
+                alert("New Feedback Added.");
             }
             tx.executeSql(sql, options, successInsert, errorHandler);
 		}
