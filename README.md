@@ -10,3 +10,6 @@
 - ~~Dropdown Select list~~
 - Default on Others
 - ~~Review Insert~~
+- Update
+- Delete
+
