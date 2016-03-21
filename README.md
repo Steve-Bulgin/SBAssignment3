@@ -8,3 +8,4 @@
 - ~~Drop tables on Clear~~
 - ~~HTML Tidy up~~
 - ~~Dropdown Select list~~
+- Default on Others
