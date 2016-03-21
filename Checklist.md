@@ -1,5 +1,7 @@
 ## Things needing doing
 
-- [ ] Listview of reviews
-- [ ] Deletes
-- [ ] Updates
+- [ ] a task list item
+- [ ] list syntax required
+- [ ] normal **formatting**, @mentions, #1234 refs
+- [ ] incomplete
+- [x] completed
