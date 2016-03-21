@@ -35,14 +35,15 @@ function btnUpdate_click() {
 }
 
 function btnSave_click() {
-	if(sbValidate_sbAddForm()) {
-		var service = parseInt($("#service").val());
-		var valuerating = parseInt($("#valrating").val());
-		var food = parseInt($("#foodquality").val());
-		var avg = Math.round(((food + service + valuerating)/15)*100);
-		$("#rating").val(avg + "%");
+	sbaddFeedback();
+	
+	var service = parseInt($("#service").val());
+	var valuerating = parseInt($("#valrating").val());
+	var food = parseInt($("#foodquality").val());
+	var avg = Math.round(((food + service + valuerating)/15)*100);
+	$("#rating").val(avg + "%");
 
-	}
+	
 }
 
 function btnSaveDefaults_click() {

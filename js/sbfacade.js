@@ -5,6 +5,8 @@
  *      Steven Bulgin, 2016.03.20: Added clearDatabase function 
  *      Steven Bulgin, 2016.03.20: Added insert and drop function for type tbl
  *						Don't think it's right.
+ *      Steven Bulgin, 2016.03.20: Insert works. sbaddFeedback added but 
+ *						default on the select is being a pest
  */
 
  function clearDatabase () {
@@ -34,16 +36,56 @@ function sbupdateTypesDropdown () {
 		 var code = "";
 
 		 for (var i = 0; i < results.rows.length; i++) {
-            var row = results.rows[i]; // results.rows.item(i) also works
-            console.info("id: " + row['id'] + " name: " + row['name']);
+            var row = results.rows[i];
 
-		 	console.info("test");
+            if (row['name'] != "Others") {
+            	code += "<option value=\"" + row['id'] + "\">" + 
+		 			 row['name'] + "</option>";	
+            }
+            else {
+            	code += "<option selected=\"selected\" value=\"" + row['id'] + 
+            		 "\">" + 
+		 			 row['name'] + "</option>";	
 
-		 	code += "<option value=\"" + row['id'] + "\">" + 
-		 			 row['name'] + "</option>";		  	
+		 		// $('#foodtype').val() = row['id'];
+
+		 			 
+            }		 		  	
 		 }
 		 var list = $("#foodtype");
 		 list = list.html(code);
 	}
 	Type.sbselectAll(sbsuccessSelectAll); 
+
 }
+
+function sbaddFeedback () {
+	 if(sbValidate_sbAddForm()) {
+
+	 	var business = $("#business").val();
+	 	var foodtype = $("#foodtype").val();
+	 	var email = $("#email").val();
+	 	var comments = $("#comments").val();
+	 	var reviewdate = $("#reviewdate").val();
+	 	var hashrating = $("#chkReview").is(':checked');
+
+	 	if ($("#chkReview").is(":checked")) {
+	 		var foodquality = $("#foodquality").val();
+	 		var service = $("#service").val();
+	 		var valrating = $("#valrating").val();
+	 	}
+	 	else{
+	 		var foodquality = "";
+	 		var service = "";
+	 		var valrating = "";
+	 	}
+
+	 	var options = [business, foodtype, email, comments, reviewdate, hashrating,
+	 				   foodquality, service, valrating];
+
+	 	Review.sbinsert(options);
+	 	
+
+	 }
+}
+
