@@ -10,11 +10,7 @@
 - ~~Dropdown Select list~~
 - Default on Others
 - ~~Review Insert~~
-- Update
+- ~~Dynamic listview~~
+- Update/Edit
 - Delete
-
-## Task list
-
-|Task    | Done | Notes |
-|--------|------|-------|
-| Update |      |       |
+- Screen caps

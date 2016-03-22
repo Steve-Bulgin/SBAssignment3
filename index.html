@@ -33,6 +33,7 @@
 		Steven Bulgin, 2016.03.20: Added id to "Clear Database" btn
 		Steven Bulgin, 2016.03.20: Fixed home page to match A3. Added in   
 						dropdown that I missed in A2 on Feedback
+        Steven Bulgin, 2016.03.22: Removed hard coded listview items
 -->
 
 <!-- Note to self: Don't use dashs in id's and names -->
@@ -59,7 +60,7 @@
 <!-- ------------- Home page ------------- -->
 		<div data-role="page" id="sbHomePage">
 			<header id="header" data-role="header">
-				<h1>SB Feedback A2</h1>
+				<h1>SB Feedback A3</h1>
 				<div data-role="navbar">
 					<ul>
 						<li><a href="#sbHomePage" data-icon="home" 
@@ -173,23 +174,7 @@
 				</div>				
 			</header>
 			<section class="main" data-role="content">
-				<ul data-role="listview" class="ui-listview-inset">
-                    <li data-icon="false">
-                    	<a href="#sbEditFeedbackPage">
-                    		<h2>Business Name: Whale & Ale</h2>
-                    		<p>Reviewer email: dave@fakemail.com</p>
-                    		<p>Comments: Good food, terrible location</p>
-                    		<p>Overall Rating: 75/100</p>
-                    	</a>
-                    </li>
-                    <li data-icon="false">
-                    	<a href="#">
-                    		<h2>Business Name: Mucho Burrito</h2>
-                    		<p>Reviewer email: gary@fakemail.com</p>
-                    		<p>Comments: Mucho delicioso!!!</p>
-                    		<p>Overall Rating: 95/100</p>
-                    	</a>  
-                    </li>
+				<ul id="reviewList" data-role="listview" class="ui-listview-inset">
                 </ul>
 
 			</section>

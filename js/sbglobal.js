@@ -9,6 +9,8 @@
  *						Defaults
  *					*** Add Some validation on the default email ***
  *      Steven Bulgin, 2016.03.19: Added InitDB function that creates db on startup
+ *      Steven Bulgin, 2016.03.22: Added pageshow event for 'sbViewFeedbackPage' that calls
+ *						'sbgetReviews'
  */
 
 function sbCbxChecker(cbxid, elmid) {
@@ -66,6 +68,10 @@ function feedbackLoader () {
 	grabEmail("email"); 
 }
 
+function pageViewFeedback_show () {
+	 sbgetReviews();
+}
+
 function init() {
  	sbCbxChecker("chkReview", "rating-grp");
  	sbCbxChecker("chkEditReview", "rating-edit-grp");
@@ -75,6 +81,7 @@ function init() {
  	$("#btnSaveDefaults").on("click", btnSaveDefaults_click);
  	$("#btnDatabaseClear").on("click", btnDatabaseClear_click);
  	$("#sbAddFeedbackPage").on("pageshow", feedbackLoader);
+ 	$("#sbViewFeedbackPage").on("pageshow", pageViewFeedback_show);
 }
 
 function initDB() {
