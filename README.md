@@ -8,13 +8,9 @@
 - ~~Drop tables on Clear~~
 - ~~HTML Tidy up~~
 - ~~Dropdown Select list~~
-- Default on Others
+- ~~Default on Others~~
 - ~~Review Insert~~
-- Update
+- ~~Dynamic listview~~
+- Update/Edit
 - Delete
-
-## Task list
-
-|Task    | Done | Notes |
-|--------|------|-------|
-| Update |      |       |
+- Screen caps
