@@ -33,7 +33,8 @@
 		Steven Bulgin, 2016.03.20: Added id to "Clear Database" btn
 		Steven Bulgin, 2016.03.20: Fixed home page to match A3. Added in   
 						dropdown that I missed in A2 on Feedback
-        Steven Bulgin, 2016.03.22: Removed hard coded listview items
+        Steven Bulgin, 2016.03.22: Removed all hard coded values from forms and
+        				lists
 -->
 
 <!-- Note to self: Don't use dashs in id's and names -->
@@ -176,7 +177,6 @@
 			<section class="main" data-role="content">
 				<ul id="reviewList" data-role="listview" class="ui-listview-inset">
                 </ul>
-
 			</section>
 			<footer id="footer" data-role="footer">
 				<h4>&copy;2016 Steven Bulgin</h4>
@@ -202,7 +202,7 @@
 			<section class="main" data-role="content">
 				<form id="sbEditForm">
 					<label for="editbusiness">Business:</label>
-					<input type="text" id="editbusiness" name="editbusiness" value="Whale & Ale">
+					<input type="text" id="editbusiness" name="editbusiness" value="">
 					<label for="editfoodtype" class="select">Type:</label>
 				    <select name="editfoodtype" id="editfoodtype">
 				        <option value="1">Canadian</option>
@@ -210,10 +210,9 @@
 				        <option value="3">Others</option>
 				    </select>
 					<label for="editemail">Reviewer Email:</label>
-					<input type="email" id="editemail" name="editemail" value="dave@fakemail.com">
+					<input type="email" id="editemail" name="editemail" value="">
 					<label for="editcomments">Reviewer Comments:</label>
-					<textarea id="editcomments" name="editcomments">Good food, terrible location
-						</textarea>
+					<textarea id="editcomments" name="editcomments"></textarea>
 					<label for="editreviewdate">Review Date:</label>
 					<input type="date" id="editreviewdate" name="editreviewdate">
 					<label for="chkEditReview">Do you want to add your ratings?

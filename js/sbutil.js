@@ -10,6 +10,8 @@
  *      Steven Bulgin, 2016.03.03: Moved local storage from global.js to
  *					sbutil.js localStorer function. Added validation for
  *					default email
+ *      Steven Bulgin, 2016.03.22: Added function 'formReset' to reset the 
+ *						add feedback form 
  */
 
 
@@ -162,3 +164,16 @@ jQuery.validator.addMethod("emailthingy",
 		return this.optional(element) || regex.test(value);
 	},
 	"Please enter a valid email before saving.");
+
+function formReset () {
+	 $("#business").val(""); 
+	 $("#email").val("");
+	 $("#comments").val("");
+	 $("#reviewdate").val("");
+	 $("#chkReview").attr("checked",false).checkboxradio("refresh");
+	 $("#foodquality").val("0");
+	 $("#service").val("0");
+	 $("#valrating").val("0");
+	 $("#rating").val("0");
+	 $("#rating-grp").hide();
+}

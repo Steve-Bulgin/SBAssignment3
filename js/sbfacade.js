@@ -14,6 +14,8 @@
  *						but it doesn't work right yet.
  *      Steven Bulgin, 2016.03.22: Added a refresh on menu. Now drop down works
  *						(Defaults on 'Others')
+ *      Steven Bulgin, 2016.03.22: Added 'sbshowCurrentReview' that fills
+ *						sbEditFeedbackPage. Works great!
  */
 
  function clearDatabase () {
@@ -89,8 +91,8 @@ function sbaddFeedback () {
 	 		var valrating = "";
 	 	}
 
-	 	var options = [business, foodtype, email, comments, reviewdate, hashrating,
-	 				   foodquality, service, valrating];
+	 	var options = [business, foodtype, email, comments, reviewdate, 
+	 				   hashrating, foodquality, service, valrating];
 
 	 	Review.sbinsert(options);
 	 	
@@ -107,8 +109,10 @@ function sbgetReviews () {
 
 			code += "<li data-icon=\"false\">" +
                     	"<a href=\"#\" data-row-id=" + row['id'] + ">" +
-                    		"<h2>Business Name: " + row['businessName'] + "</h2>" +
-                    		"<p>Reviewer email: " + row['reviewerEmail'] + "</p>" +
+                    		"<h2>Business Name: " + row['businessName'] + 
+                    		"</h2>" +
+                    		"<p>Reviewer email: " + row['reviewerEmail'] + 
+                    		"</p>" +
                     		"<p>Comments: " + row['reviewerComments'] + "</p>" +
                     		"<p>Overall Rating: " + 
                     			overallValue(row['hasRating'], 
@@ -140,6 +144,40 @@ function sbgetReviews () {
 			}  
 		}		 
 	}
-	Review.sbselectAll(sbsuccessSelectAll)	   
+	Review.sbselectAll(sbsuccessSelectAll);	   
+}
+
+function sbshowCurrentReview () {
+	var id = localStorage.getItem("id");
+    var options = [id]; 
+
+    function selectOne (tx, results) {
+    	 var row = results.rows[0];
+    	 $("#editbusiness").val(row['businessName']);
+    	 $("#editfoodtype").val(row['typeId']); 
+    	 $("#editemail").val(row['reviewerEmail']); 
+    	 $("#editcomments").val(row['reviewerComments']); 
+    	 $("#editreviewdate").val(row['reviewDate']);
+
+    	 if (row['hasRating'] == "true") {
+    	 	$("#chkEditReview").attr("checked",true).checkboxradio("refresh");
+    	 	$("#rating-edit-grp").show();
+    	 	$("#editfoodquality").val(row['rating1']);
+    	 	$("#editservice").val(row['rating2']);
+    	 	$("#editvalrating").val(row['rating3']);
+    	 	$("#editrating").val(Math.round(((row['rating1'] + row['rating2'] 
+    	 			+ row['rating3'])/15)*100));
+    	 }
+    	 else {
+    	  	$("#chkEditReview").attr("checked",false).checkboxradio("refresh");
+    	  	$("#rating-edit-grp").hide();
+    	 	$("#editfoodquality").val("0");
+    	 	$("#editservice").val("0");
+    	 	$("#editvalrating").val("0");
+    	 	$("#editrating").val("0");
+    	 } 
+    	   
+    }
+    Review.sbselect(options, selectOne);
 }
 

@@ -11,6 +11,8 @@
 - ~~Default on Others~~
 - ~~Review Insert~~
 - ~~Dynamic listview~~
+- ~~Edit page fill~~
 - Update/Edit
 - Delete
+- Cancel
 - Screen caps
