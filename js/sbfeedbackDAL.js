@@ -4,6 +4,7 @@
  * 		Steven Bulgin, 2016.03.20: Created
  *      Steven Bulgin, 2016.03.20: Added all crud Plus other stuff. Don't
  *						think it's right.
+ *      Steven Bulgin, 2016.03.22: Had wrong number of values in sbupdate, fixed
  */
 
 
@@ -96,7 +97,7 @@ var Review = {
 		  	 var sql = "UPDATE review " +
 		  	 		   "SET businessName=?, typeId=?, reviewerEmail=?, " +
 		  	 		   "reviewerComments=?, reviewDate=?, hasRating=?, " +
-		  	 		   "rating1=?, rating2=?, rating1=3 " +
+		  	 		   "rating1=?, rating2=?, rating3=? " +
 		  	 		   "WHERE id=?;"; 
 		  	 function successUpdate() {
                 console.info("Success: Update successful");
@@ -114,7 +115,7 @@ var Review = {
                  console.info("Success: Delete successful");
                  alert("Record deleted successfully");
             }
-            tx.executeSql(sql, options, successUpdate, errorHandler);
+            tx.executeSql(sql, options, successDelete, errorHandler);
 		 }
 		 db.transaction(txFunction, errorHandler, successTransaction); 
 	}

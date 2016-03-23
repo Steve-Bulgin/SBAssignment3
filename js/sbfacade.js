@@ -16,6 +16,11 @@
  *						(Defaults on 'Others')
  *      Steven Bulgin, 2016.03.22: Added 'sbshowCurrentReview' that fills
  *						sbEditFeedbackPage. Works great!
+ *      Steven Bulgin, 2016.03.22: Added 'sbupdateFeedback' that validates and
+ *						updates reviews
+ *      Steven Bulgin, 2016.03.22: Added 'sbdeleteFeedback'.
+ *      Steven Bulgin, 2016.03.22: Added 'sbCancel' returns to reviews without
+ *						storing changes
  */
 
  function clearDatabase () {
@@ -39,9 +44,8 @@ function dropTypeTbl () {
 	 Type.drop(); 
 }
 
-function sbupdateTypesDropdown () {
+function sbupdateTypesDropdown (elmid) {
 	function sbsuccessSelectAll (tx, results) {
-		 console.info("test");
 		 var code = "";
 
 		 for (var i = 0; i < results.rows.length; i++) {
@@ -52,19 +56,16 @@ function sbupdateTypesDropdown () {
 		 			 row['name'] + "</option>";	
             }
             else {
-            	code += "<option selected=\"selected\" value=\"" + row['id'] + 
+            	code += "<option selected value=\"" + row['id'] + 
             		 "\">" + 
 		 			 row['name'] + "</option>";	
-
-		 		// $('#foodtype').val() = row['id'];
-
 		 			 
             }		 		  	
 		 }
-		 var list = $("#foodtype");
+		 var list = $("#" + elmid);
 		 list = list.html(code);
-		 $('#foodtype').selectmenu();
-	     $("#foodtype").selectmenu('refresh', true);
+		 $("#" + elmid).selectmenu();
+	     $("#" + elmid).selectmenu('refresh', true);
 
 	}
 	Type.sbselectAll(sbsuccessSelectAll); 
@@ -78,7 +79,7 @@ function sbaddFeedback () {
 	 	var email = $("#email").val();
 	 	var comments = $("#comments").val();
 	 	var reviewdate = $("#reviewdate").val();
-	 	var hashrating = $("#chkReview").is(':checked');
+	 	var hasrating = $("#chkReview").is(':checked');
 
 	 	if ($("#chkReview").is(":checked")) {
 	 		var foodquality = $("#foodquality").val();
@@ -92,7 +93,7 @@ function sbaddFeedback () {
 	 	}
 
 	 	var options = [business, foodtype, email, comments, reviewdate, 
-	 				   hashrating, foodquality, service, valrating];
+	 				   hasrating, foodquality, service, valrating];
 
 	 	Review.sbinsert(options);
 	 	
@@ -154,7 +155,7 @@ function sbshowCurrentReview () {
     function selectOne (tx, results) {
     	 var row = results.rows[0];
     	 $("#editbusiness").val(row['businessName']);
-    	 $("#editfoodtype").val(row['typeId']); 
+    	 $("#editfoodtype").val(row['typeId']).selectmenu('refresh', true); 
     	 $("#editemail").val(row['reviewerEmail']); 
     	 $("#editcomments").val(row['reviewerComments']); 
     	 $("#editreviewdate").val(row['reviewDate']);
@@ -179,5 +180,45 @@ function sbshowCurrentReview () {
     	   
     }
     Review.sbselect(options, selectOne);
+}
+
+function sbupdateFeedback () {
+	if(sbValidate_sbEditForm()) {
+	    var id = localStorage.getItem("id");
+	    var business = $("#editbusiness").val();
+ 	    var foodtype = $("#editfoodtype").val();
+ 	    var email = $("#editemail").val();
+ 	    var comments = $("#editcomments").val();
+ 	    var reviewdate = $("#editreviewdate").val();
+ 	    var hasrating = $("#chkEditReview").is(':checked');
+
+ 	    if ($("#chkEditReview").is(":checked")) {
+ 		    var foodquality = $("#editfoodquality").val();
+ 		    var service = $("#editservice").val();
+ 		    var valrating = $("#editvalrating").val();
+ 	    }
+ 	    else{
+ 		    var foodquality = "";
+ 		    var service = "";
+ 		    var valrating = "";
+ 	    }
+ 	    var options = [business, foodtype, email, comments, reviewdate, 
+	 				      hasrating, foodquality, service, valrating, id];
+
+	 	   Review.sbupdate(options);
+	 	   $(location).prop('href', "#sbViewFeedbackPage");
+    }
+}
+
+function sbdeleteFeedback () {
+	 var id = localStorage.getItem("id");
+	 var options = [id];
+
+	 Review.sbdelete(options);
+	 $(location).prop('href', "#sbViewFeedbackPage");   
+}
+
+function sbCancel () {
+	 $(location).prop('href', "#sbViewFeedbackPage"); 
 }
 

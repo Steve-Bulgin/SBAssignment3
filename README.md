@@ -12,7 +12,8 @@
 - ~~Review Insert~~
 - ~~Dynamic listview~~
 - ~~Edit page fill~~
-- Update/Edit
-- Delete
-- Cancel
+- ~~Update/Edit~~
+- ~~Delete~~
+- ~~Cancel~~
+- Check requirements carefully to make sure I have everything.
 - Screen caps

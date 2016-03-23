@@ -16,6 +16,9 @@
  *						to reset the form values on leaving page.
  *      Steven Bulgin, 2016.03.22: Added 'sbshowCurrentReview' to a function
  *						'editFeedback_show' called on pageshow of Edit page
+ *      Steven Bulgin, 2016.03.22: Added click event on btnupdate that fires
+ *						'sbupdateFeedback'
+ *      Steven Bulgin, 2016.03.22: Added btnCancel click event
  */
 
 function sbCbxChecker(cbxid, elmid) {
@@ -69,7 +72,7 @@ function grabEmail (id) {
 }
 
 function feedbackLoader () {
-	sbupdateTypesDropdown();
+	sbupdateTypesDropdown("foodtype");
 	grabEmail("email"); 
 }
 
@@ -82,8 +85,22 @@ function feedbackReset () {
 }
 
 function editFeedback_show () {
+	 sbupdateTypesDropdown("editfoodtype");
 	 sbshowCurrentReview(); 
 }
+
+function btnUpdate_click () {
+	 sbupdateFeedback();  
+}
+
+function btnDelete_click () {
+	 sbdeleteFeedback();
+}
+
+function btnCancel_click () {
+	 sbCancel(); 
+}
+
 
 function init() {
  	sbCbxChecker("chkReview", "rating-grp");
@@ -96,7 +113,10 @@ function init() {
  	$("#sbAddFeedbackPage").on("pageshow", feedbackLoader);
  	$("#sbAddFeedbackPage").on("pagehide", feedbackReset);
  	$("#sbViewFeedbackPage").on("pageshow", pageViewFeedback_show);
- 	$("#sbEditFeedbackPage").on("pageshow", editFeedback_show)
+ 	$("#sbEditFeedbackPage").on("pageshow", editFeedback_show);
+ 	$("#btnUpdate").on("click", btnUpdate_click);
+ 	$("#btnDelete").on("click", btnDelete_click);
+ 	$("#btnCancel").on("click", btnCancel_click);
 }
 
 function initDB() {

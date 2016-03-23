@@ -98,15 +98,15 @@ function sbValidate_sbEditForm() {
  	var form = $("#sbEditForm");
  	form.validate({
 		rules:{
-			business:{
+			editbusiness:{
 				required: true,
 				rangelength: [2,20]
 			},
-			email:{
+			editemail:{
 				required: true,
 				email: true
 			},
-			reviewdate: {
+			editreviewdate: {
 				required: true
 			},
 			editfoodquality:{
@@ -123,15 +123,15 @@ function sbValidate_sbEditForm() {
 			}	 	        
 	    },
 	    messages:{
-	    	business:{
+	    	editbusiness:{
 	    		required: "Length must be 2-20 characters long",
 	    		rangelength: "Length must be 2-20 characters long"
 	    	},
-	    	email:{
+	    	editemail:{
 	    		required: "Please enter a valid email address.",
 	    		email: "Please enter a valid email address."
 	    	},
-	    	reviewdate:{
+	    	editreviewdate:{
 	    		required: "Review date is required"
 	    	},
 	    	editfoodquality:{
