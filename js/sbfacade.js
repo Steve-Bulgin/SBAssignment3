@@ -155,7 +155,7 @@ function sbshowCurrentReview () {
     function selectOne (tx, results) {
     	 var row = results.rows[0];
     	 $("#editbusiness").val(row['businessName']);
-    	 $("#editfoodtype").val(row['typeId']).selectmenu('refresh', true); 
+    	 t b
     	 $("#editemail").val(row['reviewerEmail']); 
     	 $("#editcomments").val(row['reviewerComments']); 
     	 $("#editreviewdate").val(row['reviewDate']);

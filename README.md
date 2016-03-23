@@ -17,3 +17,5 @@
 - ~~Cancel~~
 - Check requirements carefully to make sure I have everything.
 - Screen caps
+
+- Hey, Nadia!
