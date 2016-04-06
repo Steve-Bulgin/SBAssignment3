@@ -28,17 +28,7 @@ var Type = {
 			}
 
 			var sql = "INSERT INTO type(name) " +
-		 		   "VALUES(\"Canadian\"); " ;
- 		    
- 		    tx.executeSql(sql, options, successInsert, errorHandler);
-
- 		    sql = "INSERT INTO type(name) " +
-		 		   "VALUES(\"Asian\"); " ;
- 		    
- 		    tx.executeSql(sql, options, successInsert, errorHandler);
-
- 		    sql = "INSERT INTO type(name) " +
-		 		   "VALUES(\"Others\"); " ;
+		 		   "VALUES(?); " ;
  		    
  		    tx.executeSql(sql, options, successInsert, errorHandler);
 		}

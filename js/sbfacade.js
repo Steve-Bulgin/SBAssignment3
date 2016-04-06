@@ -37,7 +37,13 @@
 }
 
 function insertTypes () {
-	 Type.insert(); 
+	 var typesArr = ["Canadian", "Asian", "Others"];
+
+	 for (var i = 0; i < typesArr.length; i++) {
+		type = [typesArr[i]];
+		Type.insert(type); 
+	}
+	 
 }
 
 function dropTypeTbl () {
