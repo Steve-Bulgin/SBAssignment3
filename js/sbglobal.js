@@ -63,7 +63,8 @@ function btnSaveDefaults_click() {
 }
 
 function btnDatabaseClear_click () {
-	 clearDatabase(); 
+	 clearDatabase();
+	 initDB(); 
 }
 
 function grabEmail (id) {
