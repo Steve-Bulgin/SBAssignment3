@@ -1,4 +1,4 @@
-# SBAssignment3
+# SBAssignment3 for PROG3180 Mobile Apps 1
 
 - 2016.03.18 - Set up repo for A3. Filled it with starting point project 
 
